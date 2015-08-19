@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201508161120592_AddedNewFieldinStandard.Designer.cs">
       <DependentUpon>201508161120592_AddedNewFieldinStandard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508191532586_changedsubjectmodel.cs" />
+    <Compile Include="Migrations\201508191532586_changedsubjectmodel.Designer.cs">
+      <DependentUpon>201508191532586_changedsubjectmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BasicInterface.cs" />
@@ -212,7 +216,10 @@
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="View-Models\ClassListViewModel.cs" />
+    <Compile Include="View-Models\StudentListViewModel.cs" />
     <Compile Include="View-Models\StudentViewModel.cs" />
+    <Compile Include="View-Models\SubjectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -294,6 +301,10 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\SearchSubject\SearchSubject.cshtml" />
+    <Content Include="Views\SchoolClasses\ClassList.cshtml" />
+    <Content Include="Views\Subjects\SubjectList.cshtml" />
+    <Content Include="Views\SearchSubject\SearchSub.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508161120592_AddedNewFieldinStandard.resx">
       <DependentUpon>201508161120592_AddedNewFieldinStandard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508191532586_changedsubjectmodel.resx">
+      <DependentUpon>201508191532586_changedsubjectmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

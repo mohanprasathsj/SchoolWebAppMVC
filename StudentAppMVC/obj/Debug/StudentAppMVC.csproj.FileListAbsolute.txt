@@ -72,3 +72,4 @@ C:\Others\Excercises\2015\StudentWebApplicationMVC\StudentAppMVC\StudentAppMVC\o
 C:\Others\Excercises\2015\StudentWebApplicationMVC\StudentAppMVC\StudentAppMVC\obj\Debug\StudentAppMVC.Migrations.RemovedAllForeignIds.resources
 C:\Others\Excercises\2015\StudentWebApplicationMVC\StudentAppMVC\StudentAppMVC\obj\Debug\StudentAppMVC.Migrations.AddedForeignKey.resources
 C:\Others\Excercises\2015\StudentWebApplicationMVC\StudentAppMVC\StudentAppMVC\obj\Debug\StudentAppMVC.Migrations.AddedNewFieldinStandard.resources
+C:\Others\Excercises\2015\StudentWebApplicationMVC\StudentAppMVC\StudentAppMVC\obj\Debug\StudentAppMVC.Migrations.changedsubjectmodel.resources

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StudentAppMVC.Models;
+using StudentAppMVC.View_Models;
 
 namespace StudentAppMVC.Controllers
 {
@@ -38,7 +39,9 @@ namespace StudentAppMVC.Controllers
         // GET: Subjects/Create
         public ActionResult Create()
         {
-            return View();
+            SubjectViewModel subjectVM = new SubjectViewModel();
+            subjectVM.Classes = db.SchoolClasses.Select(x => new SelectListItem() { Text = x.Name, Value = x.SchoolClassId.ToString() });
+            return View(subjectVM);
         }
 
         // POST: Subjects/Create
@@ -46,17 +49,20 @@ namespace StudentAppMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubjectId,Name,ParentSubjectId,ClassId,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy")] Subject subject)
+        public ActionResult Create([Bind(Include = "Name,ClassId")] SubjectViewModel subjectVM)
         {
             if (ModelState.IsValid)
             {
+                Subject subject = new Subject();
                 subject.SubjectId = Guid.NewGuid();
+                subject.Name = subjectVM.Name;
+                subject.ClassId = subjectVM.ClassId;
                 db.Subjects.Add(subject);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(subject);
+            return View(subjectVM);
         }
 
         // GET: Subjects/Edit/5

@@ -14,24 +14,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ParentSubjectId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ClassId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -40,24 +29,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ParentSubjectId)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ClassId)
+            @Html.DisplayFor(modelItem => item.SchoolClass.Name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedBy)
-        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SubjectId }) |
             @Html.ActionLink("Details", "Details", new { id=item.SubjectId }) |

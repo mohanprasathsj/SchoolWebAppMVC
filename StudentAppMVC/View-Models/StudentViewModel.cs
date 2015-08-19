@@ -23,9 +23,11 @@ namespace StudentAppMVC.View_Models
         public IEnumerable<SelectListItem> Classes { get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Parent Email")]
+        [DataType(DataType.EmailAddress)]
         public string ParentEmail { get; set; }
 
         [Required]

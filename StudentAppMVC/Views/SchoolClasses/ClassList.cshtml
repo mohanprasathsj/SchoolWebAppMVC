@@ -19,12 +19,9 @@
                 var selectedClassID = this.value;
 
         $('#StateProvinceContainer').load
-        (<a href="mailto:'@Url.Action("StateProvinceView")?countryID=
-        '">'@Url.Action("StateProvinceView")?countryID=' + selectedCountryID);
+        (<a href="mailto:'@Url.Action("StateProvinceView")?countryID='">'@Url.Action("StateProvinceView")?countryID=' + selectedCountryID);
         // clear up the city drop down list as no state is selected
-                $('#CityContainer').load(<a href="mailto:
-                '@Url.Action("CityView")'">
-                '@Url.Action("CityView")'</a>);
+                $('#CityContainer').load(<a href="mailto:'@Url.Action("CityView")'">'@Url.Action("CityView")'</a>);
     });
     });
 </script>

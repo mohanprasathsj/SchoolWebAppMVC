@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StudentAppMVC.Models;
+using StudentAppMVC.View_Models;
 
 namespace StudentAppMVC.Controllers
 {
@@ -114,6 +115,14 @@ namespace StudentAppMVC.Controllers
             db.SchoolClasses.Remove(schoolClass);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet, ActionName("GetClassList")]
+        public ActionResult GetClassList()
+        {
+            ClassListViewModel classVM = new ClassListViewModel();
+            classVM.Classes = db.SchoolClasses.Select(x => new SelectListItem() { Text = x.Name, Value = x.SchoolClassId.ToString() });
+            return View("ClassList",classVM);
         }
 
         protected override void Dispose(bool disposing)

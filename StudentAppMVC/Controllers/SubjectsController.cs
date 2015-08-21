@@ -24,14 +24,15 @@ namespace StudentAppMVC.Controllers
         // GET: Subjects/Details/5
         public ActionResult Details(Guid? id)
         {
-            if (id == null)
+            Subject subject;
+            if (id != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                subject = db.Subjects.Find(id);
+                
             }
-            Subject subject = db.Subjects.Find(id);
-            if (subject == null)
+            else
             {
-                return HttpNotFound();
+                subject = new Subject();
             }
             return View(subject);
         }
@@ -121,6 +122,29 @@ namespace StudentAppMVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet, ActionName("GetSubjects")]
+        public ActionResult GetSubjects(Guid? classID)
+        {
+            SubjectListViewModel subjectsVM = new SubjectListViewModel();
+            if (classID != null)
+            {
+                subjectsVM.Subjects = db.Subjects.Where(x => x.ClassId == classID).Select(x => new SelectListItem() { Value = x.SubjectId.ToString(), Text = x.Name });
+
+            }
+            else
+            {
+                subjectsVM.Subjects = new List<SelectListItem>();
+            }
+            return View("SubjectList",subjectsVM);
+        }
+
+        [HttpGet, ActionName("SearchSubject")]
+        public ActionResult SearchSubject()
+        {
+            return View("SearchSubject");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -1,0 +1,46 @@
+﻿
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Search Subject</h2>
+
+<div id="ClassDrp">
+    @Html.Action("GetClassList", "SchoolClasses")
+</div>
+<div id="SubjectDrp">
+    @Html.Action("GetSubjects")
+</div>
+<div id="SubjectDetails">
+    @Html.Action("Details")
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $('#Class-DropdownID').change(function () {
+                var selectedClassID = this.value;
+                var text = "@Url.Action("GetSubjects", "Subjects")?classID=" + selectedClassID;
+                $("#SubjectDrp").load(text, function () {
+                    $('#Subject-DropdownID').change(function () {
+                        var selectedSubjectID = this.value;
+                        var text = "@Url.Action("Details", "Subjects")"+"/" + selectedSubjectID;
+                        alert(text);
+                        alert(text);
+                        $("#SubjectDetails").load(text);
+                    });
+                });
+            });
+
+        });
+
+        function test()
+        {
+            alert("hello");
+        }
+    </script>
+}

@@ -217,8 +217,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="View-Models\ClassListViewModel.cs" />
-    <Compile Include="View-Models\StudentListViewModel.cs" />
     <Compile Include="View-Models\StudentViewModel.cs" />
+    <Compile Include="View-Models\SubjectListViewModel.cs" />
     <Compile Include="View-Models\SubjectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +305,7 @@
     <Content Include="Views\SchoolClasses\ClassList.cshtml" />
     <Content Include="Views\Subjects\SubjectList.cshtml" />
     <Content Include="Views\SearchSubject\SearchSub.cshtml" />
+    <Content Include="Views\Students\StudentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

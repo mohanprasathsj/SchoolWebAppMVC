@@ -1,0 +1,31 @@
+﻿@model IEnumerable<StudentAppMVC.Models.Student>
+
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StudentDetails</h2>
+
+@{ 
+    WebGrid grid = new WebGrid(Model, canPage: true, rowsPerPage: 3);
+
+}
+
+@grid.GetHtml(displayHeader: true, mode: WebGridPagerModes.Numeric,columns:new List<WebGridColumn>() { new WebGridColumn() { ColumnName = "Name",Style="nameField" }, new WebGridColumn() { ColumnName = "Email", Style="emailField" }, new WebGridColumn() { ColumnName = "ParentEmail", Style="parentEmailField" } });
+
+<style>
+    .nameField{
+        width:30%;
+        padding:5px;
+    }
+     .emailField{
+        width:30%;
+        padding:5px;
+    }
+      .parentEmailField{
+        width:30%;
+        padding:5px;
+    }
+
+</style>

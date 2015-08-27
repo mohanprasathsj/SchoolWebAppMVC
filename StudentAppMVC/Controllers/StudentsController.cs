@@ -149,5 +149,12 @@ namespace StudentAppMVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet,ActionName("GetStudentDetails")]
+        public ActionResult GetStudentDetails()
+        {
+            IEnumerable<Student> student = db.Students.ToList<Student>();
+            return View("StudentDetails", student);
+        }
     }
 }

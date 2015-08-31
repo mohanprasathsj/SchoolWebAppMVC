@@ -1,0 +1,73 @@
+﻿@model IEnumerable<StudentAppMVC.Models.Student>
+@{
+    ViewBag.Title = "StudentDetailsEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StudentDetailsEdit</h2>
+
+@{ 
+    WebGrid grid = new WebGrid(Model);
+}
+
+@grid.GetHtml(
+    tableStyle:"table",
+    alternatingRowStyle:"alternate",
+    selectedRowStyle:"selected",
+    headerStyle:"header",
+    columns:grid.Columns(
+        grid.Column("",
+                    style:"col1",
+                    format:@<text>
+                                <button class="glyphicon-edit display-mode editbtn" id="@item.StudentId">Edit</button>
+                                <button class="glyphicon-save edit-mode savebtn" id="@item.StudentId">Save</button>
+                            </text>),
+        grid.Column("Name", 
+                    style:"cols",
+                    format: @<text>
+                                <span id="name" class="display-mode">@item.Name</span>
+                                @Html.TextBox("Name", (string) item.Name, htmlAttributes:new { @class="edit-mode" })
+                            </text>)
+                )
+    )
+
+<b>Test: </b>
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".edit-mode").hide();
+            $(".editbtn").on("click", function () {
+                var tr = $(this).parents('tr:first'); //Select the First TR while bubbling up
+                var parentEls = $(this).parents('tr:first')
+                  .map(function () {
+                      return this.tagName;
+                  })
+                  .get()
+                  .join(", ");
+                $("b").append("<strong>" + parentEls + "</strong>");
+                tr.find('.edit-mode,.display-mode').toggle();
+            })
+            $(".savebtn").on("click", function () {
+                alert("hello");
+                var tr = $(this).parents('tr:first');
+                alert("hello2");
+                var studentId = $(this).prop('id');
+                alert(studentId);
+                var name = tr.find('#Name').val();
+                $.post('@Url.Action("StudentDetailsEdit","Students")',
+                        { studentId: studentId, Name: name }, function (data) {
+                            alert(data.Name);
+                            tr.find("Name").text(data.Name);
+                        }, dataType: "json"
+                ).done(function(){console.log("success")})
+                .fail(function(){console.log("fail")})
+                .always(function(){console.log("always")});
+                tr.find('.edit-mode,.display-mode').toggle();
+
+            })
+        })
+
+
+    </script>
+}

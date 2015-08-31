@@ -156,5 +156,21 @@ namespace StudentAppMVC.Controllers
             IEnumerable<Student> student = db.Students.ToList<Student>();
             return View("StudentDetails", student);
         }
+
+        [HttpGet,ActionName("StudentDetailsEdit")]
+        public ActionResult StudentDetailsEdit()
+        {
+            IEnumerable<Student> student = db.Students.ToList<Student>();
+            return View("StudentDetailsEdit", student);
+        }
+
+        [HttpPost, ActionName("StudentDetailsEdit")]
+        public ActionResult StudentDetailsEdit(Guid studentId, string Name)
+        {
+            var student=db.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
+            student.Name = Name;
+            db.SaveChanges();
+            return Json(student);
+        }
     }
 }

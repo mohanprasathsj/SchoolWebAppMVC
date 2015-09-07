@@ -25,8 +25,8 @@
         grid.Column("Name", 
                     style:"cols",
                     format: @<text>
-                                <span id="lblName" class="display-mode" name="name">@item.Name</span>
-                                @Html.TextBox("Name", (string) item.Name, htmlAttributes:new { @class="edit-mode", @id="txtName" })
+                                <span id="name" class="display-mode">@item.Name</span>
+                                @Html.TextBox("Name", (string) item.Name, htmlAttributes:new { @class="edit-mode" })
                             </text>)
                 )
     )
@@ -54,26 +54,20 @@
                 alert("hello2");
                 var studentId = $(this).prop('id');
                 alert(studentId);
-                var name = tr.find('#txtName').val();
-                $.ajax({
-                    type:'POST',
-                    url: '@Url.Action("StudentDetailsEdit","Students")',
-                    data: { studentId: studentId, Name: name },
-                    dataType: "json",
-                    success: function (data) {
-                        var row = $('#' + data.ID).parents('tr:first');
-                        row.find('#lblName').text(data.Name);
-                        alert(data.Name);
-                    }
-                }).done(function(){console.log("success")})
+                var name = tr.find('#Name').val();
+                $.post('@Url.Action("StudentDetailsEdit","Students")',
+                        { studentId: studentId, Name: name }, function (data) {
+                            alert(data.Name);
+                            tr.find("Name").text(data.Name);
+                        }, dataType: "json"
+                ).done(function(){console.log("success")})
                 .fail(function(){console.log("fail")})
-                .always(function () { console.log("always") });
-
+                .always(function(){console.log("always")});
                 tr.find('.edit-mode,.display-mode').toggle();
 
             })
         })
 
 
-</script>
+    </script>
 }

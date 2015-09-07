@@ -170,7 +170,7 @@ namespace StudentAppMVC.Controllers
             var student=db.Students.Where(x => x.StudentId == studentId).FirstOrDefault();
             student.Name = Name;
             db.SaveChanges();
-            return Json(new { Name=student.Name, ID=student.StudentId });
+            return Json(student);
         }
     }
 }
